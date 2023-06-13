@@ -1,0 +1,54 @@
+﻿@using web_odev.Models
+@model List<SliderModel>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - web_odev</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/web_odev.styles.css" asp-append-version="true" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
+    <link rel="stylesheet" href="~/css/style.css">
+
+
+</head>
+<body>
+    <div class="blog-slider">
+        <div class="blog-slider__wrp swiper-wrapper">
+            @foreach (var item in Model)
+            {
+                <div class="blog-slider__item swiper-slide">
+                    <div class="blog-slider__img">
+
+                        <img src="@item.img" alt="@item.title">
+                    </div>
+                    <div class="blog-slider__content">
+                        <div class="blog-slider__title">@item.title</div>
+                        <div class="blog-slider__text">@item.content </div>
+                        <a href="@item.url" class="blog-slider__button">READ MORE</a>
+                    </div>
+                </div>
+            }
+         
+        </div>
+        <div class="blog-slider__pagination"></div>
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
+    <script src="~/js/script.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
