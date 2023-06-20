@@ -1,0 +1,40 @@
+﻿@using web_odev.Models
+@model List<ProductModel>
+
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+<div class="text-center">
+    <h1 class="display-1">Ürünler</h1>
+</div>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Ürün Başlık</th>
+            <th>Ürün İçerik</th>
+            <th>Ürün Link</th>
+            <th>Ürün İşlemleri</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.title</td>
+                <td>@item.content</td>
+                <td>@item.url</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="UpdateProduct" asp-route-id="@item.id">Güncelle</a>
+                    <a class="btn btn-danger" asp-action="DeleteProduct" asp-route-id="@item.id">Sil</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a class="btn btn-primary" asp-controller="Admin" asp-action="SaveProduct">Yeni</a>
+            </td>
+        </tr>
+    </table>
+</div>

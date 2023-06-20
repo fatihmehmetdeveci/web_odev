@@ -30,15 +30,32 @@ namespace web_odev.Controllers
             foreach (DataRow row in dataTable.Rows)
             {
                 sliderModels.Add(
-                    new SliderModel() { 
-                        id = row.Field<int>("id"), 
-                        title = row.Field<string>("title"), 
-                        content = row.Field<string>("content"), 
-                        url = row.Field<string>("url"), 
-                        img = row.Field<string>("img") 
+                    new SliderModel()
+                    {
+                        id = row.Field<int>("id"),
+                        title = row.Field<string>("title"),
+                        content = row.Field<string>("content"),
+                        url = row.Field<string>("url"),
+                        img = row.Field<string>("img")
                     });
             }
-
+            List<ProductModel> productsModels = new List<ProductModel>();
+            MySqlDataAdapter mySqlProduct = new MySqlDataAdapter("Select * From products", connection);
+            DataTable dataTableProduct = new DataTable();
+            mySqlProduct.Fill(dataTableProduct);
+            foreach (DataRow row in dataTableProduct.Rows)
+            {
+                productsModels.Add(
+                    new ProductModel()
+                    {
+                        id = row.Field<int>("id"),
+                        title = row.Field<string>("title"),
+                        content = row.Field<string>("content"),
+                        url = row.Field<string>("url"),
+                        img = row.Field<string>("img")
+                    });
+            }
+            ViewBag.productModels = productsModels;
             return View(sliderModels);
         }
 

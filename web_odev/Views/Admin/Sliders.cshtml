@@ -1,0 +1,40 @@
+﻿@using web_odev.Models
+@model List<SliderModel>
+
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+<div class="text-center">
+    <h1 class="display-1">Sliderlar</h1>
+</div>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Slider Başlık</th>
+            <th>Slider İçerik</th>
+            <th>Slider Link</th>
+            <th>Slider İşlemleri</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.title</td>
+                <td>@item.content</td>
+                <td>@item.url</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="UpdateSlider" asp-route-id="@item.id">Güncelle</a>
+                    <a class="btn btn-danger" asp-action="DeleteSlider" asp-route-id="@item.id">Sil</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a class="btn btn-primary" asp-controller="Admin" asp-action="SaveSlider">Yeni</a>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,54 +1,439 @@
-﻿@using web_odev.Models
-@model List<SliderModel>
+﻿@model List<SliderModel>
 @{
-    ViewData["Title"] = "Home Page";
+    List<ProductModel> productModels = ViewBag.productModels;
     Layout = "";
 }
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - web_odev</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/web_odev.styles.css" asp-append-version="true" />
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
-    <link rel="stylesheet" href="~/css/style.css">
-
-
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Main CSS -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <title>Doktor Sitesi Ödev</title>
 </head>
-<body>
-    <div class="blog-slider">
-        <div class="blog-slider__wrp swiper-wrapper">
-            @foreach (var item in Model)
-            {
-                <div class="blog-slider__item swiper-slide">
-                    <div class="blog-slider__img">
 
-                        <img src="@item.img" alt="@item.title">
-                    </div>
-                    <div class="blog-slider__content">
-                        <div class="blog-slider__title">@item.title</div>
-                        <div class="blog-slider__text">@item.content </div>
-                        <a href="@item.url" class="blog-slider__button">READ MORE</a>
+<body data-bs-spy="scroll" data-bs-target="#navigation">
+    <!-- PRELOADER STARTS
+            ========================================================================= -->
+    <div id="main-preloader" class="main-preloader semi-dark-background">
+        <div class="main-preloader-inner center">
+            <h1 class="preloader-percentage center">
+                <span class="preloader-percentage-text">0</span> <!-- Show Percentage Number -->
+                <span class="percentage">%</span>
+            </h1>
+            <div class="preloader-bar-outer">
+                <div class="preloader-bar"></div>
+                <!-- Percentage Precess Bar -->
+            </div>
+        </div>
+    </div>
+    <!-- /.. PRELOADER ENDS
+            ========================================================================= -->
+    <!-- NAVIGATION STARTS
+            ========================================================================= -->
+    <nav id="navigation" class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+        <div class="container">
+            <a class="navbar-brand white-logo" href="#">
+                <img src="assets/imgs/logo-white.png" class="img-fluid"
+                     alt="">
+            </a>
+            <a class="navbar-brand black-logo" href="#"><img src="assets/imgs/logo.png" class="img-fluid" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Anasayfa </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Ürürnler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">İletişim</a>
+                    </li>
+                </ul>
+                <span class="ps-3 d-none d-lg-block">
+                    <a href="tel:+11234567890" class="btn btn-primary" target="_blank"><i class="las la-phone"></i> +905511378777</a>
+                </span>
+                <span class="ps-3 d-none d-xl-block">
+                    <a href="https://fatihmehmetdeveci.com.tr"
+                       class="btn btn-primary" target="_blank"><i class="las la-sms"></i></a>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVIGATION ENDS
+            ========================================================================= -->
+    <!-- SLIDER STARTS
+            ========================================================================= -->
+    <section id="home">
+        <div id="slider">
+            <div id="rev_slider_24_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="website-intro"
+                 data-source="gallery" style="background:#000000;padding:0px;">
+                <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
+                <div id="rev_slider_24_1" class="rev_slider fullscreenbanner tiny_bullet_slider" style="display:none;"
+                     data-version="5.4.1">
+                    <ul>
+                        <!-- SLIDE  -->
+                        @foreach (var item in Model)
+                        {
+                            <li data-index="rs-@item.id" data-transition="zoomout" data-slotamount="default"
+                                data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power4.easeInOut"
+                                data-easeout="Power4.easeInOut" data-masterspeed="2000"
+                                data-thumb="@item.img" data-rotate="0"
+                                data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7"
+                                data-saveperformance="off" data-title="Intro" data-param1="" data-param2="" data-param3=""
+                                data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
+                                data-param10="" data-description="">
+                                <!-- MAIN IMAGE -->
+                                <img src="@item.img" alt="" data-bgposition="center center"
+                                     data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
+                                     data-no-retina>
+                                <!-- LAYERS -->
+                                <!-- LAYER NR. 14 -->
+                                <div class="tp-caption tp-shape tp-shapewrapper " id="slide-@item.id-layer-1"
+                                     data-x="['left','left','center','center']" data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                     data-width="full" data-height="full" data-whitespace="nowrap" data-type="shape"
+                                     data-basealign="slide" data-responsive_offset="off" data-responsive="off"
+                                     data-frames='[{"delay":10,"speed":500,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":500,"frame":"999","to":"opacity:0;","ease":"Power4.easeOut"}]'
+                                     data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]" style="z-index: 18;background-color:rgba(0, 0, 0, 0.3);">
+                                </div>
+                                <!-- LAYER NR. 15 -->
+                                <div class="tp-caption   tp-resizeme" id="slide-@item.id-layer-2"
+                                     data-x="['left','left','center','center']" data-hoffset="['51','51','0','0']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-70','-70']"
+                                     data-fontsize="['80','80','60','45']" data-lineheight="['80','80','60','45']"
+                                     data-width="['none','none','550','360']" data-height="none"
+                                     data-whitespace="['nowrap','nowrap','normal','normal']" data-type="text"
+                                     data-responsive_offset="on"
+                                     data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:0.9;sY:0.9;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"sX:0.9;sY:0.9;opacity:0;fb:20px;","ease":"Power3.easeInOut"}]'
+                                     data-textAlign="['left','left','center','center']" data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     style="z-index: 19; white-space: nowrap; font-size: 90px; line-height: 90px; font-weight: 500; color: #ffffff; letter-spacing: -5px;font-family: 'Poppins', sans-serif;">
+                                    @item.title
+                                </div>
+                                <!-- LAYER NR. 16 -->
+                                <div class="tp-caption   tp-resizeme" id="slide-@item.id-layer-3"
+                                     data-x="['left','left','center','center']" data-hoffset="['50','50','0','0']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['90','90','60','30']"
+                                     data-fontsize="['25','25','25','20']" data-lineheight="['35','35','35','30']"
+                                     data-width="['500','500','480','360']" data-height="none" data-whitespace="normal"
+                                     data-type="text" data-responsive_offset="on"
+                                     data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:0.9;sY:0.9;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"sX:0.9;sY:0.9;opacity:0;fb:20px;","ease":"Power3.easeInOut"}]'
+                                     data-textAlign="['left','left','center','center']" data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     style="z-index: 20; min-width: 480px; max-width: 480px; white-space: normal; font-size: 25px; line-height: 35px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family: 'Poppins', sans-serif;">
+                                    @item.content
+                                </div>
+                                <!-- LAYER NR. 17 -->
+                                <a class="tp-caption rev-btn  tp-resizeme"
+                                   href="@item.url"
+                                   target="_blank" id="slide-@item.id-layer-7" data-x="['left','left','center','center']"
+                                   data-hoffset="['50','50','0','0']" data-y="['middle','middle','middle','middle']"
+                                   data-voffset="['200','200','160','120']" data-width="250" data-height="none"
+                                   data-whitespace="nowrap" data-type="button" data-actions='' data-responsive_offset="on"
+                                   data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:0.9;sY:0.9;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"sX:0.9;sY:0.9;opacity:0;fb:20px;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;fb:0;","style":"c:rgba(255,255,255,1);bs:solid;bw:0 0 0 0;"}]'
+                                   data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
+                                   data-paddingright="[20,20,20,20]" data-paddingbottom="[0,0,0,0]"
+                                   data-paddingleft="[20,20,20,20]"
+                                   style="z-index: 21; min-width: 200px; max-width: 200px; white-space: nowrap; font-size: 16px; line-height: 60px; font-weight: 400; color: rgba(255,255,255,1); font-family: 'Poppins', sans-serif;background-color:rgb(0,123,255);border-color:rgba(0,0,0,1);border-radius:30px 30px 30px 30px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;text-decoration: none;">
+                                    Devamı..
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                    <div class="tp-bannertimer tp-bottom" style="height: 5px; background: rgb(0,123,255);"></div>
+                </div>
+            </div>
+            <!-- END REVOLUTION SLIDER -->
+        </div>
+    </section>
+    <!-- /.. SLIDER ENDS
+                ========================================================================= -->
+    <section class="home-services" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="herotext">
+                        <h6>Öne Çıkan Ürünlerimiz</h6>
+                        <h2>A Perfect Smile <br>to begin with</h2>
+                        <h5 class="pt-2">
+                            Cepteur sint occaecat cupidatat proident, taken possession of my entire soul,
+                            like these sweet mornings of spring which I enjoy with my whole heart and feel the charm.
+                        </h5>
                     </div>
                 </div>
-            }
-         
+            </div>
+            <div class="services-carousel pt-5">
+                @foreach (var item in productModels)
+                {
+                    <div class="block">
+                        <a href="@item.url">
+                            <div class="picture"><img src="@item.img" class="img-fluid" alt="@item.title"></div>
+                            <h2>@item.title</h2>
+                            <p>
+                                @item.content
+                            </p>
+                        </a>
+                    </div>
+                }
+            </div>
         </div>
-        <div class="blog-slider__pagination"></div>
-    </div>
+    </section>
+    <!-- /.. SERVICES ENDS
+            ========================================================================= -->
+    <!-- CONTACT US STARTS
+            ========================================================================= -->
+    <section class="contact-us" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="herotext pb-4">
+                        <h6>İletişim</h6>
+                        <h2></h2>
+                    </div>
+                    <address class="clearfix d-flex align-items-center pb-2">
+                        <div class="icon"><i class="las la-clock"></i></div>
+                        <div class="detail">
+                            <div class="heading">Çalışma Saatleri</div>
+                            Paz-Cuma: 9AM - 6PM
+                        </div>
+                    </address>
+                    <address class="clearfix d-flex align-items-center pb-2">
+                        <div class="icon"><i class="las la-map-marker"></i></div>
+                        <div class="detail">
+                            <div class="heading">Adress</div>
+                            İstiklal Mahallesi Tekel Cad,<br /> Ballıca Kampüsü No:2,<br /> 55000 Ondokuzmayıs/Samsun
+                        </div>
+                    </address>
+                    <address class="clearfix d-flex align-items-center pb-2">
+                        <div class="icon"><i class="las la-phone"></i></div>
+                        <div class="detail">
+                            <div class="heading">Telefon</div>
+                            <a href="tel:+11234567890">05511378777</a>
+                        </div>
+                    </address>
+                    <address class="clearfix d-flex align-items-center">
+                        <div class="icon"><i class="las la-envelope-open"></i></div>
+                        <div class="detail">
+                            <div class="heading">Mail</div>
+                            <a href="mailto:info@fatihmhmtdeveci.com" target="_blank">info@fatihmhmtdeveci.com</a>
+                        </div>
+                    </address>
+                </div>
+                <div class="col-12 col-lg-6 pt-5 pt-lg-0">
+                    <div class="herotext pb-4">
+                        <h6>İletişim Formu</h6>
+                        @*<h2>Let Us Know Here</h2>*@
+                    </div>
+                    <form action='#' method='post' name='ContactForm' id='ContactForm'>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="name" placeholder="İsim Soyisim">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" class="form-control" name="phone" placeholder="Telefon">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" name="comment" placeholder="Mesaj"
+                                      rows="3"></textarea>
+                        </div>
+                        <div id='message_post'></div>
+                        <button type='submit' value='Submit' name='submitf' id="submitf"
+                                class="btn btn-primary mt-3">
+                            Gönder
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.. CONTACT US ENDS
+            ========================================================================= -->
+    <!-- MAPS STARTS
+            ========================================================================= -->
+    <section class="map p-0">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 p-0">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2987.5641557261724!2d36.10721861542977!3d41.51371887925279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4087df5a9652e01b%3A0xd8b189e80530c991!2sSamsun%20%C3%9Cniversitesi!5e0!3m2!1str!2str!4v1687269204749!5m2!1str!2str" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.. MAPS ENDS
+            ========================================================================= -->
+    <!-- FOOTER STARTS
+            ========================================================================= -->
+    <footer class="dark-grey-bg text-center">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <ul>
+                        <li><a href="#home">Anasayfa</a></li>
+                        <li><a href="#services">Ürünler</a></li>
+                        <li><a href="#contact">İletişim</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row pt-4">
+                <div class="col-12">
+                    <ul class="socialmedia">
+                        <li><a href="#"><i class="lab la-twitter"></i></a></li>
+                        <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="lab la-behance"></i></a></li>
+                        <li><a href="#"><i class="lab la-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row pt-3 copyright">
+                <div class="col-12">
+                    Fatih Mehmet DEVECİ © 2023
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /.. FOOTER ENDS
+            ========================================================================= -->
+    <!-- TO TOP STARTS
+            ========================================================================= -->
+    <a href="#home" class="back-to-top"><i class="las la-angle-up"></i></a>
+    <!-- /.. TO TOP ENDS
+            ========================================================================= -->
+    <!-- INCLUD ALL JS FILES
+            ========================================================================= -->
+    <!--JQUERY MIN JS-->
+    <script src="/assets/lib/jquery-1.12.4/jquery.min.js"></script>
+    <!--BOOTSTRAP JS-->
+    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- REVOLUTION JS FILES -->
+    <script src="/assets/lib/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/assets/lib/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- SLICEY ADD-ON FILES -->
+    <script src='/assets/lib/revolution/revolution-addons/slicey/js/revolution.addon.slicey.min8a54.js?ver=1.0.0'></script>
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS
+            (Load Extensions only on Local File Systems !
+            The following part can be removed on Server for On Demand Loading) -->
+    <script src="/assets/lib/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="/assets/lib/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="/assets/lib/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="/assets/lib/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="/assets/lib/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="/assets/lib/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="/assets/lib/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="/assets/lib/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="/assets/lib/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script>
+        var tpj = jQuery;
+        var revapi24;
+        tpj(document).ready(function () {
+            if (tpj("#rev_slider_24_1").revolution == undefined) {
+                revslider_showDoubleJqueryError("#rev_slider_24_1");
+            } else {
+                revapi24 = tpj("#rev_slider_24_1").show().revolution({
+                    sliderType: "standard",
+                    jsFileLocation: "revolution/js/",
+                    sliderLayout: "fullscreen",
+                    dottedOverlay: "none",
+                    delay: 9000,
+                    navigation: {
+                        keyboardNavigation: "off",
+                        keyboard_direction: "horizontal",
+                        mouseScrollNavigation: "off",
+                        mouseScrollReverse: "default",
+                        onHoverStop: "off",
+                        bullets: {
+                            enable: true,
+                            hide_onmobile: false,
+                            style: "bullet-bar",
+                            hide_onleave: false,
+                            direction: "horizontal",
+                            h_align: "center",
+                            v_align: "bottom",
+                            h_offset: 0,
+                            v_offset: 50,
+                            space: 5,
+                            tmp: ''
+                        }
+                        ,
+                        arrows: {
+                            style: "uranus",
+                            enable: true,
+                            hide_onmobile: false,
+                            hide_onleave: false,
+                            tmp: '',
+                            left: {
+                                h_align: "left",
+                                v_align: "center",
+                                h_offset: 10,
+                                v_offset: 0
+                            },
+                            right: {
+                                h_align: "right",
+                                v_align: "center",
+                                h_offset: 10,
+                                v_offset: 0
+                            }
+                        }
+                    },
+                    responsiveLevels: [1240, 1024, 778, 480],
+                    visibilityLevels: [1240, 1024, 778, 480],
+                    gridwidth: [1240, 1024, 778, 480],
+                    gridheight: [750, 768, 960, 720],
+                    lazyType: "none",
+                    shadow: 0,
+                    spinner: "spinner1",
+                    stopLoop: "off",
+                    stopAfterLoops: -1,
+                    stopAtSlide: -1,
+                    shuffle: "off",
+                    autoHeight: "off",
+                    fullScreenAutoWidth: "off",
+                    fullScreenAlignForce: "off",
+                    fullScreenOffsetContainer: "",
+                    fullScreenOffset: "0px",
+                    hideThumbsOnMobile: "off",
+                    hideSliderAtLimit: 0,
+                    hideCaptionAtLimit: 0,
+                    hideAllCaptionAtLilmit: 0,
+                    debugMode: false,
+                    fallbacks: {
+                        simplifyAll: "off",
+                        nextSlideOnWindowFocus: "off",
+                        disableFocusListener: false,
+                    }
+                });
+            }
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
-    <script src="~/js/script.js"></script>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+            if (revapi24) revapi24.revSliderSlicey();
+        });	/*ready*/
+    </script>
+    <!-- PRELOADER -->
+    <script src="/assets/lib/preloader/sPreloader.js"></script>
+    <!-- OWL CAROUSEL -->
+    <script src="/assets/lib/owl-carousel/owl.carousel.js"></script>
+    <!-- ISOTOPE GALLERY -->
+    <script src="/assets/lib/isotope/jquery.isotope.min.js"></script>
+    <script src="/assets/lib/isotope/custom-isotope-mansory.js"></script>
+    <!-- MAGNIFIC POPUP -->
+    <script src="/assets/lib/magnific-popup/jquery.magnific-popup.js"></script>
+    <!-- CONTACT FORM JS -->
+    <script src="/assets/js/contact-form/contact-form.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="/assets/js/script.js"></script>
 </body>
 </html>

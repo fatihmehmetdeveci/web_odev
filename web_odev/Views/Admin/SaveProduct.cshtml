@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Admin Page";
+}
+@model ProductModel
+
+<div class="text-center">
+    <h1 class="display-1">Ürün Ekle</h1>
+
+</div>
+<form asp-action="SaveProduct" method="post" enctype='multipart/form-data'>
+    <div class="row">
+        <div class="col-6 p-2">
+            <label>Ürün Başlık</label>
+            <input asp-for="title" class="form-control" />
+        </div>
+        <div class="col-6 p-2">
+            <label>Ürün İçerik</label>
+            <input asp-for="content" class="form-control" />
+        </div>
+        <div class="col-6 p-2">
+            <label>Ürün Link</label>
+            <input asp-for="url" class="form-control" />
+        </div>
+        <div class="col-6 p-2">
+            <label>Ürün Resim</label>
+            <input asp-for="file" class="form-control" type="file" />
+        </div>
+    </div>
+    <button class="btn btn-primary mt-3">Kaydet</button>
+</form>
