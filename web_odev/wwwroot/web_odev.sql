@@ -10,6 +10,32 @@
 CREATE DATABASE IF NOT EXISTS `web_odev` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `web_odev`;
 
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `content` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `img` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `url` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `products` (`id`, `title`, `content`, `img`, `url`) VALUES
+	(1, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/1.jpg', '#'),
+	(2, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(3, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(4, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(5, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(6, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(7, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(8, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(9, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(10, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(11, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(12, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(13, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(14, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#'),
+	(15, 'Ürün deneme', 'Ürün deneme İçerik', '/Uploads/Product/2.jpg', '#');
+
 CREATE TABLE IF NOT EXISTS `sliders` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -17,11 +43,11 @@ CREATE TABLE IF NOT EXISTS `sliders` (
   `img` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `url` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `sliders` (`id`, `title`, `content`, `img`, `url`) VALUES
-	(2, 'Örnek Güncellem', 'Slider Örnek', 'https://res.cloudinary.com/muhammederdem/image/upload/v1535759872/kuldar-kalvik-799168-unsplash.jpg', '#'),
-	(3, 'Deneme Ekleme', 'İçerik Deneme', 'Uploads\\banner4 TURKCE.jpg', '#');
+	(2, 'Örnek Güncellem', 'Slider Örnek', '/Uploads/1.jpg', '#'),
+	(3, 'Deneme Ekleme', 'İçerik Deneme', '/Uploads/2.jpg', '#');
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
